@@ -29,7 +29,6 @@
       "apiVersion": "[parameters('webSiteApiVersion')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id)))]"
-      ]"
       ],
       "tags": {
         "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id))))]": "Resource",

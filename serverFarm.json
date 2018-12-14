@@ -32,7 +32,7 @@
   "variables": {},
   "resources": [
     {
-      "name": "[parameters('webAppNamePrefix')]",
+      "name": "[concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id))]",
       "type": "Microsoft.Web/serverfarms",
       "location": "[resourceGroup().location]",
       "apiVersion": "2015-08-01",
@@ -41,10 +41,10 @@
       },
       "dependsOn": [],
       "tags": {
-        "displayName": "[parameters('webAppNamePrefix')]"
+        "displayName": "[concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id))]"
       },
       "properties": {
-        "name": "[parameters('webAppNamePrefix')]",
+        "name": "[concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id))]",
         "numberOfWorkers": 1
       }
     }],

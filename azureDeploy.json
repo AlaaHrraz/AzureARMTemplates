@@ -1,0 +1,58 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "baseTemplateUri": {
+      "type": "string",
+      "metadata": {
+        "description": "Base URI of template resources."
+      }
+    },
+    "deploymentType": {
+      "type": "string",
+      "allowedValues": [ "dev", "prod" ],
+      "defaultValue": "dev",
+      "metadata": {
+        "description": "String to determine which network the VM is deployed to."
+      }
+    },
+    "serverFarmName": {
+      "type": "string",
+      "metadata": {
+        "description": "Server Farm Name "
+      }
+    },
+    "sharedTemplateNameServerFarm": {
+      "type": "string",
+      "metadata": { "descrition": "shared Template Name Server Farm" }
+    }
+  },
+
+  "variables": {
+    "deploymentApiVersion": "2016-02-01",
+    "serverFarmApiVersion": "2015-08-01"
+  },
+  "resources": [
+    {
+      "apiVersion": "[variables('deploymentApiVersion')]",
+      "name": "[parameters('serverFarmName')]",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('baseTemplateUri'), '/shared/', parameters('sharedTemplateNameServerFarm'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "webAppNamePrefix": { "value": "[parameters('serverFarmName')]" },
+          "serverFarmApiVersion": { "value": "[variables('serverFarmApiVersion')]" }
+         
+        }
+      }
+    }
+    
+  ],
+  "outputs": {
+
+  }
+}

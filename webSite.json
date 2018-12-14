@@ -36,7 +36,7 @@
       },
       "properties": {
         "name": "[parameters('WebSiteName')]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id)))]"
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix')))]"
       }
     }
   ],

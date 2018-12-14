@@ -28,10 +28,10 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "[parameters('webSiteApiVersion')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id)))]"
+        "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix')))]"
       ],
       "tags": {
-        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id))))]": "Resource",
+        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix'))))]": "Resource",
         "displayName": "WebSite"
       },
       "properties": {

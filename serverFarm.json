@@ -41,7 +41,7 @@
       "name": "[parameters('webAppNamePrefix')]",
       "type": "Microsoft.Web/serverfarms",
       "location": "[resourceGroup().location]",
-      "apiVersion": "[parameters('serverFarmApiVersion')]",
+      "apiVersion": "2015-08-01",
       "sku": {
         "name": "[parameters('farmSkuName')]"
       },

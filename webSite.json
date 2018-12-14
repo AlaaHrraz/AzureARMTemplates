@@ -6,12 +6,6 @@
       "type": "string",
       "minLength": 1
     },
-    "serverFarmApiVersion": {
-      "type": "string",
-      "metadata": {
-        "description": "Azure API for Server Farm API Version ."
-      }
-    },
     "webSiteApiVersion": {
       "type": "string",
       "metadata": {

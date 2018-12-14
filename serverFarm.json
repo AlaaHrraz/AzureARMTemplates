@@ -43,7 +43,7 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "[parameters('serverFarmApiVersion')]",
       "sku": {
-        "name": "[parameters('webAppNamePrefix')]"
+        "name": "[parameters('farmSkuName')]"
       },
       "dependsOn": [],
       "tags": {

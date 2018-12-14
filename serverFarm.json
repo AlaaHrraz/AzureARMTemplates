@@ -42,7 +42,9 @@
       "type": "Microsoft.Web/serverfarms",
       "location": "[resourceGroup().location]",
       "apiVersion": "[parameters('serverFarmApiVersion')]",
-      "sku": "Dynamic",
+      "sku": {
+        "name": "[parameters('farmSkuName')]"
+      },
       "dependsOn": [],
       "tags": {
         "displayName": "[parameters('webAppNamePrefix')]"

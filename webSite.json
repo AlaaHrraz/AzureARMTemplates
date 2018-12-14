@@ -1,0 +1,50 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webAppNamePrefix": {
+      "type": "string",
+      "minLength": 1
+    },
+    "serverFarmApiVersion": {
+      "type": "string",
+      "metadata": {
+        "description": "Azure API for Server Farm API Version ."
+      }
+    },
+    "webSiteApiVersion": {
+      "type": "string",
+      "metadata": {
+        "description": "web Site  API Version ."
+      }
+    },
+    "WebSiteName": {
+      "type": "string",
+      "metadata": {
+        "description": "web Site Name."
+      }
+    }
+
+  },
+  "variables": {},
+  "resources": [
+    {
+      "name": "[parameters('WebSiteName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[parameters('webSiteApiVersion')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id)))]"
+      ],
+      "tags": {
+        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id))))]": "Resource",
+        "displayName": "WebSite"
+      },
+      "properties": {
+        "name": "[parameters('WebSiteName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix'),'-',uniqueString(resourceGroup().id)))]"
+      }
+    }
+  ],
+  "outputs": {}
+}

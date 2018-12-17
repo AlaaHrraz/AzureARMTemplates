@@ -34,9 +34,6 @@
           }
         }
       ],
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites/siteextensions', parameters('apiAppName'), 'Microsoft.ApiApp')]"
-      ],
       "properties": {
         "package": {
           "id": "Microsoft.ApiApp"

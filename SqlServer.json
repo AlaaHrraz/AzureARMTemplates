@@ -10,10 +10,6 @@
       "type": "string",
       "minLength": 1
     },
-    "apiAppName": {
-      "type": "string",
-      "minLength": 1
-    },
     "predicasqlserverAdminLogin": {
       "type": "string",
       "minLength": 1

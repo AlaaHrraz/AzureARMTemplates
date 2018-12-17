@@ -1,0 +1,47 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serverName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "polfeasdbName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "polfeasdbCollation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "polfeasdbEdition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "polfeasdbRequestedServiceObjectiveName": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "name": "[concat(parameters('serverName'), '/', parameters('polfeasdbName'))]",
+      "type": "Microsoft.Sql/servers/databases",
+      "location": "westeurope",
+      "apiVersion": "2014-04-01-preview",
+      "dependsOn": [],
+      "tags": {
+        "displayName": "polfeasdb"
+      },
+      "properties": {
+        "collation": "[parameters('polfeasdbCollation')]",
+        "edition": "[parameters('polfeasdbEdition')]",
+        "maxSizeBytes": "1073741824",
+        "requestedServiceObjectiveName": "[parameters('polfeasdbRequestedServiceObjectiveName')]"
+      }
+    }
+  ],
+  "outputs": {}
+
+}

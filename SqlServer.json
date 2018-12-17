@@ -1,0 +1,62 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webAppNamePrefix": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predicasqlserverName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "apiAppName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predicasqlserverAdminLogin": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predicasqlserverAdminLoginPassword": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "variables": {},
+  "resources": [
+    ,
+
+
+    {
+      "name": "[parameters('predicasqlserverName')]",
+      "type": "Microsoft.Sql/servers",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2014-04-01-preview",
+      "dependsOn": [],
+      "tags": {
+        "displayName": "predicasqlserver"
+      },
+      "properties": {
+        "administratorLogin": "[parameters('predicasqlserverAdminLogin')]",
+        "administratorLoginPassword": "[parameters('predicasqlserverAdminLoginPassword')]"
+      },
+      "resources": [
+        {
+          "name": "AllowAllWindowsAzureIps",
+          "type": "firewallrules",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', parameters('predicasqlserverName'))]"
+          ],
+          "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "0.0.0.0"
+          }
+        }
+      ]
+    }
+  ],
+  "outputs": {}
+}

@@ -17,10 +17,6 @@
     "polfeasdbEdition": {
       "type": "string",
       "minLength": 1
-    },
-    "polfeasdbRequestedServiceObjectiveName": {
-      "type": "string",
-      "minLength": 1
     }
   },
   "variables": {},

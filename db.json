@@ -37,8 +37,7 @@
       "properties": {
         "collation": "[parameters('polfeasdbCollation')]",
         "edition": "[parameters('polfeasdbEdition')]",
-        "maxSizeBytes": "1073741824",
-        "requestedServiceObjectiveName": "[parameters('polfeasdbRequestedServiceObjectiveName')]"
+        "maxSizeBytes": "1073741824"
       }
     }
   ],

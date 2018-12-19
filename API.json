@@ -13,6 +13,18 @@
     "packageId": {
       "type": "string",
       "minLength": 1
+    },
+    "repoURL": {
+      "type": "string",
+      "metadata": {
+        "description": "web Site Name."
+      }
+    },
+    "branch": {
+      "type": "string",
+      "metadata": {
+        "description": "web Site Name."
+      }
     }
   },
   "variables": {},
@@ -43,7 +55,23 @@
             }
           ]
         }
-      }
+      },
+
+      "resources": [
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "dependsOn": [
+            "[parameters('apiAppName')]"
+          ],
+          "properties": {
+            "RepoUrl": "[parameters('repoURL')]",
+            "branch": "[parameters('branch')]",
+            "IsManualIntegration": true
+          }
+        }
+      ]
     }
   ],
   "outputs": {}

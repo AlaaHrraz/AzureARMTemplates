@@ -23,7 +23,7 @@
       "name": "[parameters('apiAppName')]",
       "location": "[resourceGroup().location]",
       "kind": "apiApp",
-      
+
       "properties": {
         "name": "[parameters('apiAppName')]",
         "siteConfig": {
@@ -42,7 +42,30 @@
             }
           ]
         }
-      }
+      },
+      "resources": [
+        {
+          "type": "Microsoft.AppService/apiapps",
+          "apiVersion": "2015-03-01-preview",
+          "name": "[parameters('apiAppName')]",
+          "location": "[resourceGroup().location]",
+          "resources": [
+            {
+              "type": "providers/links",
+              "apiVersion": "2015-01-01",
+              "name": "Microsoft.Resources/apiAppSite",
+              "dependsOn": [
+                "[resourceId('Microsoft.AppService/apiapps', parameters('apiAppName'))]"
+              ]
+            }
+          ],
+          "properties": {
+            "package": {
+              "id": "[parameters('packageId')]"
+            }
+          }
+        }
+      ]
     }
   ],
   "outputs": {}

@@ -49,8 +49,6 @@
           "apiVersion": "2016-07-07",
           "name": "[parameters('apiAppName')]",
           "location": "[resourceGroup().location]",
-          "serviceUrl": "https://predica-polfeas-apiapp.azurewebsites.net",
-          "path": "/",
           "protocols": [
             "http"
           ],

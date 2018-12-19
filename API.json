@@ -49,6 +49,8 @@
           "apiVersion": "2016-07-07",
           "name": "[parameters('apiAppName')]",
           "location": "[resourceGroup().location]",
+          "serviceUrl": "https://6c0b4944-0ee0-4-231-b9ee.azurewebsites.net/",
+          "path": "/",
           "protocols": [
             "http"
           ],

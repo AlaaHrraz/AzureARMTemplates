@@ -43,7 +43,8 @@
         "displayName": "WebSite"
       },
       "properties": {
-        "name": "[parameters('WebSiteName')]"
+        "name": "[parameters('WebSiteName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix') ,'-',uniqueString(resourceGroup().id)))]"
       },
       "resources": [
         {

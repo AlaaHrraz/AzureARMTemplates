@@ -26,6 +26,7 @@
 
       "properties": {
         "name": "[parameters('apiAppName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix') ,'-',uniqueString(resourceGroup().id)))]",
         "siteConfig": {
           "appSettings": [
             {
@@ -42,39 +43,7 @@
             }
           ]
         }
-      },
-      "resources": [
-        {
-          "type": "Microsoft.ApiManagement/service/apis",
-          "apiVersion": "2016-07-07",
-          "name": "[parameters('apiAppName')]",
-          "location": "[resourceGroup().location]",
-          "serviceUrl": "https://6c0b4944-0ee0-4-231-b9ee.azurewebsites.net/",
-          "path": "/",
-          "protocols": [
-            "http"
-          ],
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites',parameters('apiAppName'))]"
-          ],
-          "resources": [
-            {
-              "type": "providers/links",
-              "apiVersion": "2015-01-01",
-              "name": "Microsoft.Resources/apiAppSite",
-              "dependsOn": [
-                "[resourceId('Microsoft.AppService/apiapps', parameters('apiAppName'))]"
-              ]
-            }
-          ],
-
-          "properties": {
-            "package": {
-              "id": "[parameters('packageId')]"
-            }
-          }
-        }
-      ]
+      }
     }
   ],
   "outputs": {}

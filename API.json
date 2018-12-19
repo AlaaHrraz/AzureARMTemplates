@@ -22,7 +22,7 @@
       "apiVersion": "2015-08-01",
       "name": "[parameters('apiAppName')]",
       "location": "[resourceGroup().location]",
-     
+      "kind": "apiApp",
       
       "properties": {
         "name": "[parameters('apiAppName')]",

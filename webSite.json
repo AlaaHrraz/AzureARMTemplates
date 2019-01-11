@@ -18,12 +18,6 @@
         "description": "web Site Name."
       }
     },
-    "WebApp_ConnString1": {
-      "type": "string",
-      "metadata": {
-        "description": "ConnString1 Connection String for Web App."
-      }
-    },
     "repoURL": {
       "type": "string",
       "metadata": {
@@ -50,15 +44,7 @@
       },
       "properties": {
         "name": "[parameters('WebSiteName')]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix') ,'-',uniqueString(resourceGroup().id)))]",
-        "siteConfig": {
-          "connectionStrings": [
-            {
-              "name": "ConnString1",
-              "connectionString": "[parameters('WebApp_ConnString1')]"
-            }
-          ]
-        }
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', concat(parameters('webAppNamePrefix') ,'-',uniqueString(resourceGroup().id)))]"
       },
       "resources": [
         {
